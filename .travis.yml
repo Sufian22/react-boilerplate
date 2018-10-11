@@ -1,0 +1,21 @@
+sudo: required
+language: generic
+group: edge
+
+branches:
+  only:
+    - master
+    - develop
+
+services:
+  - docker
+
+before_install:
+  - pip install --user awscli
+  - export PATH=$PATH:$HOME/.local/bin
+
+script:
+  - ./travis/build.sh
+
+notifications:
+  email: false
