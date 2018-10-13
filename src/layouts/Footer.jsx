@@ -5,7 +5,7 @@ import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import HomeOutlined from '@material-ui/icons/HomeOutlined';
 import HelpOutline from '@material-ui/icons/HelpOutline';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -23,6 +23,7 @@ class Footer extends React.Component {
 
   handleChange = (event, value) => {
     this.setState({ value });
+    this.props.history.push(value);
   };
 
   render() {
@@ -35,14 +36,17 @@ class Footer extends React.Component {
         onChange={this.handleChange}
         showLabels
         className={classes.root}
-        position="static"
       >
-        <Link to="/">
-          <BottomNavigationAction label="Home" icon={<HomeOutlined />} />
-        </Link>
-        <Link to="/about">
-          <BottomNavigationAction label="About" icon={<HelpOutline />} />
-        </Link>
+        <BottomNavigationAction
+          label="Home"
+          value="/"
+          icon={<HomeOutlined />}
+        />
+        <BottomNavigationAction
+          label="About"
+          value="/about"
+          icon={<HelpOutline />}
+        />
       </BottomNavigation>
     );
   }
@@ -52,4 +56,4 @@ Footer.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Footer);
+export default withRouter(withStyles(styles)(Footer));
