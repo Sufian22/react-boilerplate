@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import MovieFilter from '@material-ui/icons/MovieFilter';
 
 const styles = theme => ({
   root: {
@@ -27,36 +28,40 @@ const styles = theme => ({
   },
   links: {
     '&:hover': {
-      color: '#000000',
+      borderBottom: '3px solid #ea148c',
     },
     marginRight: theme.spacing.unit * 3,
     color: '#ffffff',
     textDecoration: 'none',
+  },
+  icon: {
+    margin: theme.spacing.unit,
+    fontSize: 32,
+    color: '#ffffff',
   },
 });
 
 function Header(props) {
   const { classes } = props;
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h4" className={classes.title}>
-            Test App
-          </Typography>
-          <Typography variant="h6" className={classes.links}>
-            <Link to="/" className={classes.links}>
-              Home
-            </Link>
-          </Typography>
-          <Typography variant="h6" className={classes.links}>
-            <Link to="/about" className={classes.links}>
-              About
-            </Link>
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </div>
+    <AppBar position="static" className={classes.root}>
+      <Toolbar>
+        <MovieFilter className={classes.icon} />
+        <Typography variant="h4" className={classes.title}>
+          Movix
+        </Typography>
+        <Typography variant="h6">
+          <Link to="/" className={classes.links}>
+            Home
+          </Link>
+        </Typography>
+        <Typography variant="h6">
+          <Link to="/about" className={classes.links}>
+            About
+          </Link>
+        </Typography>
+      </Toolbar>
+    </AppBar>
   );
 }
 

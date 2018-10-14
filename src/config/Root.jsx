@@ -10,10 +10,13 @@ import { BrowserRouter } from 'react-router-dom';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: '#5ec9b4',
-      main: '#1ab394',
-      dark: '#127d67',
+      light: '#292b2d',
+      main: '#2a4863',
+      dark: '#a4c8e1',
     },
+  },
+  typography: {
+    useNextVariants: true,
   },
 });
 
