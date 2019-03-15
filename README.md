@@ -1,4 +1,4 @@
-# Pub GUI
+# React & Redux Boilerplate
 
 Install project dependencies and start the development server
 
