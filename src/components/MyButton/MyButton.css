@@ -1,0 +1,63 @@
+.specialButton {
+  border-radius: 20px;
+  width: 50%;
+  border: 2px solid #1ab394;
+  background: #383d47;
+  color: white;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-transition-property: color, background, border;
+  transition-property: color, background, border;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+.specialButton:hover {
+  color: #383d47;
+  background: #1ab394;
+  border: 2px solid white;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.specialButton:active {
+  -webkit-animation-name: hvr-push;
+  animation-name: hvr-push;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+
+.simpleButton {
+  background: unset;
+  border: unset;
+  color: white;
+  border-bottom: 2px solid transparent;
+}
+
+.simpleButton:hover {
+  cursor: pointer;
+  color: #1ab394;
+}
+
+.simpleButton,
+.specialButton {
+  padding: 10px;
+  margin: 20px;
+  font-size: 16px;
+}
+
+.specialButton:focus,
+.simpleButton:focus {
+  outline: unset;
+}
+
+@keyframes hvr-push {
+  50% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}

@@ -26,10 +26,10 @@ serviceWorker.unregister();
 
 if (module.hot) {
   module.hot.accept('./config/Root', () => {
-const NextRoot = require('./config/Root');
-ReactDOM.render(
-  <NextRoot store={store} />,
-  document.getElementById('root'),
+    const NextRoot = require('./config/Root');
+    ReactDOM.render(
+      <NextRoot store={store} />,
+      document.getElementById('root'),
     );
   });
 }

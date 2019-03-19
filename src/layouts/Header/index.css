@@ -1,0 +1,36 @@
+.navbar {
+  top: 0;
+  background-color: #282c34;
+  border-bottom: 1vh solid #383d47;
+  color: white;
+  justify-content: space-between;
+  padding: 0 2vw;
+  overflow: hidden;
+}
+
+.navbar-left {
+  left: 0;
+}
+
+.navbar-right {
+  right: 0;
+}
+
+.navbar,
+.navbar-left,
+.navbar-right {
+  display: flex;
+  align-items: center;
+  height: 8vh;
+  font-size: 2vw;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: #1ab394;
+}

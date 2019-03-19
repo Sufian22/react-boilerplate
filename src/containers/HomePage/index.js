@@ -1,29 +1,90 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './index.css';
-import Button from '@material-ui/core/Button';
+import SignPanel from '../../components/SignPanel/SignPanel';
+import ProductList from '../../components/ProductList/ProductList';
 
-class HomePage extends Component {
+function ProductItem(name, description, price) {
+  this.name = name;
+  this.description = description;
+  this.price = price;
+}
+
+var products = [
+  new ProductItem(
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    'Nam sit ametvehicula turpis. Nam iaculis placerat enim ut imperdiet. Aenean commodo,erat ac feugiat fringilla, sem leo pharetra turpis, eget congue augueorci malesuada magna. Nulla enim quam, vehicula vitae tortor sed,dapibus fermentum ligula. Nam mattis dignissim imperdiet. In variuslacinia arcu, eget egestas eros porta et. Aenean consectetur purus necluctus accumsan.',
+    '12',
+  ),
+  new ProductItem(
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    'Nam sit ametvehicula turpis. Nam iaculis placerat enim ut imperdiet. Aenean commodo,erat ac feugiat fringilla, sem leo pharetra turpis, eget congue augueorci malesuada magna. Nulla enim quam, vehicula vitae tortor sed,dapibus fermentum ligula. Nam mattis dignissim imperdiet. In variuslacinia arcu, eget egestas eros porta et. Aenean consectetur purus necluctus accumsan.',
+    '20',
+  ),
+  new ProductItem(
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    'Nam sit ametvehicula turpis. Nam iaculis placerat enim ut imperdiet. Aenean commodo,erat ac feugiat fringilla, sem leo pharetra turpis, eget congue augueorci malesuada magna. Nulla enim quam, vehicula vitae tortor sed,dapibus fermentum ligula. Nam mattis dignissim imperdiet. In variuslacinia arcu, eget egestas eros porta et. Aenean consectetur purus necluctus accumsan.',
+    '15',
+  ),
+  new ProductItem(
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    'Nam sit ametvehicula turpis. Nam iaculis placerat enim ut imperdiet. Aenean commodo,erat ac feugiat fringilla, sem leo pharetra turpis, eget congue augueorci malesuada magna. Nulla enim quam, vehicula vitae tortor sed,dapibus fermentum ligula. Nam mattis dignissim imperdiet. In variuslacinia arcu, eget egestas eros porta et. Aenean consectetur purus necluctus accumsan.',
+    '15',
+  ),
+  new ProductItem(
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    'Nam sit ametvehicula turpis. Nam iaculis placerat enim ut imperdiet. Aenean commodo,erat ac feugiat fringilla, sem leo pharetra turpis, eget congue augueorci malesuada magna. Nulla enim quam, vehicula vitae tortor sed,dapibus fermentum ligula. Nam mattis dignissim imperdiet. In variuslacinia arcu, eget egestas eros porta et. Aenean consectetur purus necluctus accumsan.',
+    '12',
+  ),
+  new ProductItem(
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    'Nam sit ametvehicula turpis. Nam iaculis placerat enim ut imperdiet. Aenean commodo,erat ac feugiat fringilla, sem leo pharetra turpis, eget congue augueorci malesuada magna. Nulla enim quam, vehicula vitae tortor sed,dapibus fermentum ligula. Nam mattis dignissim imperdiet. In variuslacinia arcu, eget egestas eros porta et. Aenean consectetur purus necluctus accumsan.',
+    '20',
+  ),
+  new ProductItem(
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    'Nam sit ametvehicula turpis. Nam iaculis placerat enim ut imperdiet. Aenean commodo,erat ac feugiat fringilla, sem leo pharetra turpis, eget congue augueorci malesuada magna. Nulla enim quam, vehicula vitae tortor sed,dapibus fermentum ligula. Nam mattis dignissim imperdiet. In variuslacinia arcu, eget egestas eros porta et. Aenean consectetur purus necluctus accumsan.',
+    '15',
+  ),
+  new ProductItem(
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    'Nam sit ametvehicula turpis. Nam iaculis placerat enim ut imperdiet. Aenean commodo,erat ac feugiat fringilla, sem leo pharetra turpis, eget congue augueorci malesuada magna. Nulla enim quam, vehicula vitae tortor sed,dapibus fermentum ligula. Nam mattis dignissim imperdiet. In variuslacinia arcu, eget egestas eros porta et. Aenean consectetur purus necluctus accumsan.',
+    '15',
+  ),
+];
+
+class HomePage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showRegisterForm: false,
+      loginSuccess: false,
+    };
+  }
+
+  setShowRegisterForm = () =>
+    this.setState({ showRegisterForm: !this.state.showRegisterForm });
+
+  setLoginSuccess = () =>
+    this.setState({ loginSuccess: !this.state.loginSuccess });
+
   render() {
+    const { showRegisterForm, loginSuccess } = this.state;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          <Button variant="contained" color="primary">
-            Disabled
-          </Button>
-        </header>
+      <div className="homePage">
+        {(showRegisterForm || (!showRegisterForm && !loginSuccess)) && (
+          <SignPanel
+            showRegisterForm={showRegisterForm}
+            setShowRegisterForm={this.setShowRegisterForm}
+            loginSuccess={loginSuccess}
+            setLoginSuccess={this.setLoginSuccess}
+          />
+        )}
+        {!showRegisterForm &&
+          loginSuccess && (
+            <div>
+              <ProductList products={products} />
+            </div>
+          )}
       </div>
     );
   }
